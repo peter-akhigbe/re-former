@@ -1,0 +1,27 @@
+<h1>Form</h1>
+
+<form action="/users" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <div class="field">
+    <label for="user_username">Username:</label><br>
+    <input type="text" name="user[username]" id="user_username">
+    <br><br>
+  </div>
+
+  <div class="field">
+    <label for="user_email">Email:</label><br>
+    <input type="email" name="user[email]" id="user_email">
+    <br><br>
+  </div>
+
+  <div class="field">
+    <label for="user_password">Password:</label><br>
+    <input type="password" name="user[password]" id="user_password">
+    <br><br>
+  </div>
+
+  <div class="actions">
+    <input type="submit" value="Create User">
+  </div>
+</form>
