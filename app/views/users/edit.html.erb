@@ -1,0 +1,62 @@
+<h1>Form</h1>
+
+<!--<form action="/users" accept-charset="UTF-8" method="post">-->
+<!--  <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">-->
+
+<!--  <div class="field">-->
+<!--    <label for="user_username">Username:</label><br>-->
+<!--    <input type="text" name="user[username]" id="user_username">-->
+<!--    <br><br>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--    <label for="user_email">Email:</label><br>-->
+<!--    <input type="email" name="user[email]" id="user_email">-->
+<!--    <br><br>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--    <label for="user_password">Password:</label><br>-->
+<!--    <input type="password" name="user[password]" id="user_password">-->
+<!--    <br><br>-->
+<!--  </div>-->
+
+<!--  <div class="actions">-->
+<!--    <input type="submit" value="Create User">-->
+<!--  </div>-->
+<!--</form>-->
+
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <p>Errors</p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :username, "Enter your Username:" %><br>
+    <%= form.text_field :username, id: "user_username", value: @user.username %>
+    <br><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, "Enter your Email:" %><br>
+    <%= form.email_field :email, id: "user_email", value: @user.email %>
+    <br><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, "Enter your Password:" %><br>
+    <%= form.password_field :password, id: "user_password", placeholder: "New Password" %>
+    <br><br>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update User" %>
+  </div>
+<% end %>
